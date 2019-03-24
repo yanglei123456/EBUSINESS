@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>购物车</title>
+</head>
+<body>
+		<h4>购物车</h4>
+姓名：{{username}}
+<br/>
+<table>
+	<thead>
+		<tr>
+			<th>编号</th>
+			<th>名称</th>
+			<th>价格</th>
+			<th>数量</th>
+			<th>删除</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for key in goods %}
+		    <tr>
+		    	<td>{{key.id}}</td>
+			    <td>{{key.name}}</td>
+		    	<td>{{key.price}}</td>
+			    <td><form action = '/update_chart/{{key.id}}' method = "post"> <input type = 'number' value="{{key.count}}" style="width:30px;" name = 'count'><input type = 'submit'></form></td>
+			    <td><a href="/remove_chart/{{key.id}}">删除</a></td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<a href='/remove_chart_all'>删除所有</a><br>
+<!--<form>
+	<input type ='submit' value='生成订单' method ='get' action ='/view_address'>
+</form>-->
+<a href="/view_address">生成订单</a>
+
+</body>

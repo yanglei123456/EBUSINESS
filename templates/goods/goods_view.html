@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>goods_view</title>
+</head>
+<body>
+	<table width="700" border="0">
+	<thead>
+		<tr>
+			<th>编号</th>
+			<th>名称</th>
+			<th>价格</th>
+			<th>详情</th>
+			<th>加购物车<th>
+	    </tr>
+	</thead>
+	<tbody>
+	
+		{% for goods in page %}
+		<tr>
+			<td>{{ goods.id}}</td>
+			<td>{{goods.name}}</td>
+			<td>{{goods.price}}</td>
+			<td><a href="view_goods/{{goods.id}}">详情</a></td>
+			<td><a href="add_chart/{{goods.id}}/1">加入</a></td>
+		</tr>	
+			{%endfor%}
+	</tbody>
+    </table>
+
+    {% if page.has_previous %}
+        <a href="/goods_view{{ page.previous_page_number }}">上一页</a>
+    {% endif %}
+    {% for pindex in page.paginator.page_range %}
+    	{% if pindex == page.number %}
+    	    {{ pindex}}
+    	{% else %} 
+    	    <a href="/goods_view{{ pindex }}">{{ pindex }} </a>
+    	{% endif%}
+    {% endfor %}
+    {% if page.has_next %}
+    	<a href="/goods_view{{ page.next_page_number }}">下一页</a>
+    {% endif %}
+
+</body>

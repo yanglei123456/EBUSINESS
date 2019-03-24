@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>主页index</title>
+</head>
+<body>
+<h1>商品号：{{content.id}}</h1><br>
+<a href="/add_chart/{{content.id}}/2"> 加入购物车</a><br>
+
+
+<img src='/load/{{content.picture}}'>
+<!--
+<img src='http://b.hiphotos.baidu.com/image/pic/item/2e2eb9389b504fc27c224b2debdde71190ef6d9d.jpg'>-->
+<!--如何载入图像？以下内容有问题，以后再改正-->
+<img src="{% static 'upload/upload/1.png' %}" width="400" height="200"><br>
+商品价格：{{content.price}}<br>
+商品介绍：{{content.desc}}
+</body>

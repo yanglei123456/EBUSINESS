@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>user_info</title>
+</head>
+<body>
+		<h2>个人中心</h2>
+姓名：{{username}}<br/>
+
+邮箱：{{user_list.email}}
+<br/>
+<table>
+	<thead>
+		<tr>
+			<th>编号</th>
+			<th>地址</th>
+			<th>电话</th>
+			<th>修改</th>
+			<th>删除</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for address in useraddress %}
+		<tr>
+			<td>{{address.id}}</td>
+			<td>{{address.address}}</td>
+			<td>{{address.phone}}</td>
+			<td><a href="/update_address/{{address.id}}">修改</a></td>
+			<td><a href="/delete_address/{{address.id}}">删除</a></td>
+		</tr>
+		{% endfor %}
+
+	</tbody>
+</table>
+		<a href="/logout">退出</a>
+
+		<a href="/change_password">修改密码</a>
+		<form method = 'get' action='/add_address/1'><input type="submit" value='添加地址'></form> 
+
+</body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>goods_view</title>
+</head>
+<body>
+	<table width="700" border="0">
+	<thead>
+		<tr>
+			<th>编号</th>
+			<th>名称</th>
+			<th>价格</th>
+			<th>个数</th>
+			<th>删除<th>
+	    </tr>
+	</thead>
+	<tbody>
+	
+		{% for key in orders_list_var %}
+		<tr>
+			<td>{{ key.id}}</td>
+			<td>{{key.name}}</td>
+			<td>{{key.price}}</td>
+			<td>{{key.count}}</td>
+			<td><a href="/delete_orders/{{key.id}}/3">删除</a></td>
+		</tr>	
+		{%endfor%}
+	</tbody>
+    </table>
+<div>    订单生成时间：{{orders_list.create_time}}
+    <br>
+    收获地址：{{address}}<br>
+</div>    	<input type="submit" value="支付" >
+ 
+ </body>
